@@ -2,6 +2,8 @@
 
 Application that update/maintains Exchange rate Crypto coins to currencies.
 
+Crypto coins to currencies, exchange rate logs are maintained and updated hourly. Logs can further be used to analyse the increase or decrease in rates or which coin is performing better.
+
 
 ```bash
 DATABASES = {
@@ -15,6 +17,7 @@ DATABASES = {
     }
 }
 ```
+
 
 # SECRET_KEY
 SECRET_KEY is fetched from env as well
