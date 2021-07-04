@@ -1,36 +1,27 @@
 from django.db import models
 
 
-class ModelBigIntegerAuto(models.BigAutoField):
-    """
-    This basically tells django not to try apply the rules it does
-    to 'serial' columns and not trash our custom insta-sequence
-    """
-
-    def get_internal_type(self):
-        return "BigIntegerField"
-
-    def db_type(self, connection):
-        """
-        Custom db type
-        """
-        db_type_format = "BIGINT DEFAULT public.next_id()"
-
-        return db_type_format
-
-
-class BaseModel(models.Model):
-    id = ModelBigIntegerAuto(
-        primary_key=True,
-    )
-
-    class Meta:
-        """Abstract class."""
-
-        abstract = True
+# wanted ID to be BIG INT but sue to shortage of time, could not resolve the error
+# leaving it here just to  give you an idea
+# class ModelBigIntegerAuto(models.BigAutoField):
+#     """
+#     This basically tells django not to try apply the rules it does
+#     to 'serial' columns and not trash our custom insta-sequence
+#     """
+#
+#     def get_internal_type(self):
+#         return "BigIntegerField"
+#
+#     def db_type(self, connection):
+#         """
+#         Custom db type
+#         """
+#         db_type_format = "BIGINT DEFAULT public.next_id()"
+#
+#         return db_type_format
 
 
-class Coin(BaseModel):
+class Coin(models.Model):
     """
     Crypto Coin model
     """
@@ -62,7 +53,7 @@ class Coin(BaseModel):
         return policy_states.get(self.status, "-")
 
 
-class Currency(BaseModel):
+class Currency(models.Model):
     """
     Currency model
 
@@ -73,7 +64,7 @@ class Currency(BaseModel):
     code = models.TextField(max_length=20)
 
 
-class ExchangeRateLogs(BaseModel):
+class ExchangeRateLogs(models.Model):
     """
     Currency model
 

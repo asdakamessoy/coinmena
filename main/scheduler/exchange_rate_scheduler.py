@@ -14,9 +14,6 @@ from main.third_party.alphavantage import perform_exchange_rate_check
 Request = namedtuple("Request", ["crypto_name", "crypto_code", "currency_code"])
 
 
-REQUEST = [Request("Bitcoin", "BTC", "USD")]
-
-
 def update_exchange_rate_task():
     """
     Update task
@@ -26,15 +23,17 @@ def update_exchange_rate_task():
 
     :return:
     """
+    REQUEST = [Request("Bitcoin", "BTC", "USD")]
     print("update_exchange_rate_task")
     for request in REQUEST:
-        coin, _ = Coin.objects.get_or_create(
+        coin = Coin.objects.filter(
             name=request.crypto_name, code=request.crypto_code
-        )
-        currency, _ = Currency.objects.get_or_create(
+        ).first()
+        currency = Currency.objects.filter(
             name=request.currency_code, code=request.currency_code
-        )
-        perform_exchange_rate_check(coin, currency)
+        ).first()
+        if coin and currency:
+            perform_exchange_rate_check(coin, currency)
 
 
 def start():

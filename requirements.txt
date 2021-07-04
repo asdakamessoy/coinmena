@@ -1,1 +1,6 @@
 apscheduler==3.6.1
+Django==3.2.3
+packaging==19.2
+virtualenv==20.4.3
+requests==2.25.1
+psycopg2==2.8.6
