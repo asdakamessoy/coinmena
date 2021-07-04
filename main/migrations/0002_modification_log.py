@@ -11,6 +11,16 @@ def setup_initial_data(apps, schema_editor):
     currency, _ = Currency.objects.get_or_create(name="US Dollars", code="USD")
 
 
+def reverse_initial_data(apps, schema_editor):
+    Coin = apps.get_model("main", "Coin")
+    Currency = apps.get_model("main", "Currency")
+    ExchangeRateLogs = apps.get_model("main", "ExchangeRateLogs")
+
+    ExchangeRateLogs.objects.all().delete()
+    Coin.objects.all().delete()
+    Currency.objects.all().delete()
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -40,5 +50,6 @@ class Migration(migrations.Migration):
         ),
         migrations.RunPython(
             code=setup_initial_data,
+            reverse_code=reverse_initial_data
         ),
     ]
