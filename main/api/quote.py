@@ -10,7 +10,7 @@ def get_quote(request, *args, **kwargs):
     """
     Get quote for Crypto coin in a particular currency
 
-    Endpoint: /api/vX/quote/<coin code>/currency code>/
+    Endpoint: /vX/quote/<coin code>/currency code>/
 
     :param request:
     :return:
@@ -39,7 +39,7 @@ def fetch_updated_quote(request, *args, **kwargs):
     """
     POST quote for Crypto coin in a particular currency
 
-    Endpoint: /api/vX/quote/
+    Endpoint: /vX/quote/
 
     :param request:
     :return:
