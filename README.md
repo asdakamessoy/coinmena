@@ -35,5 +35,17 @@ Alphavantage API key should be defined as "ALPHA_API_KEY" env key
 apscheduler - Background Scheduler is used to trigger after every hour, better solution would be using celery task but could not due to time constraint.
 
 
+# API Sample
+GET : /v1/quote/<coin code>/currency code>/?api_key=CLIENT_API_KEY
+POST : /v1/quote/?api_key=CLIENT_API_KEY
+    payload:
+    {
+        crypto_coin_code: "",
+        currency_code: ""
+    }
+
+
+
+
 
 
