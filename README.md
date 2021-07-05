@@ -36,6 +36,8 @@ apscheduler - Background Scheduler is used to trigger after every hour, better s
 
 
 # API Sample
+
+```bash
 GET : /v1/quote/<coin code>/currency code>/?api_key=CLIENT_API_KEY
 POST : /v1/quote/?api_key=CLIENT_API_KEY
     payload:
@@ -43,7 +45,7 @@ POST : /v1/quote/?api_key=CLIENT_API_KEY
         crypto_coin_code: "",
         currency_code: ""
     }
-
+```
 
 
 
